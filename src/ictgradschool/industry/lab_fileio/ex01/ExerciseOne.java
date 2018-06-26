@@ -1,4 +1,4 @@
-package ictgradschool.industry.lab08.ex01;
+package ictgradschool.industry.lab_fileio.ex01;
 
 public class ExerciseOne {
 

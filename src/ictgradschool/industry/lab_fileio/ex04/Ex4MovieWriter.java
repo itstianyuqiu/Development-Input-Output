@@ -1,7 +1,7 @@
-package ictgradschool.industry.lab08.ex04;
+package ictgradschool.industry.lab_fileio.ex04;
 
-import ictgradschool.industry.lab08.ex03.Movie;
-import ictgradschool.industry.lab08.ex03.MovieWriter;
+import ictgradschool.industry.lab_fileio.ex03.Movie;
+import ictgradschool.industry.lab_fileio.ex03.MovieWriter;
 
 /**
  * Created by anhyd on 20/03/2017.

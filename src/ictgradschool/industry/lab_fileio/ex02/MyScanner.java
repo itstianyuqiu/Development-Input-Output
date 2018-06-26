@@ -1,4 +1,4 @@
-package ictgradschool.industry.lab08.ex02;
+package ictgradschool.industry.lab_fileio.ex02;
 
 public class MyScanner {
 

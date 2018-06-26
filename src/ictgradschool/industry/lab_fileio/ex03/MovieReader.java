@@ -1,4 +1,4 @@
-package ictgradschool.industry.lab08.ex03;
+package ictgradschool.industry.lab_fileio.ex03;
 
 import ictgradschool.Keyboard;
 
