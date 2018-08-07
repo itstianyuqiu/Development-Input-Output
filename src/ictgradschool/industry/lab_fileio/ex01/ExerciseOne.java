@@ -1,11 +1,12 @@
 package ictgradschool.industry.lab_fileio.ex01;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class ExerciseOne {
+
+    public static void main(String[] args) {
+        new ExerciseOne().start();
+    }
 
     public void start() {
         fileReaderEx01();
@@ -47,10 +48,15 @@ public class ExerciseOne {
         // TODO Read input2.txt and print the total number of characters, and the number of e and E characters.
         // TODO Use a FileReader.
         File file = new File("input2.txt");
-        total=(int)file.length();
-        System.out.println("total: "+total);
+        total = (int) file.length();
         try (FileReader fr = new FileReader(file)) {
-
+            char[] chars = new char[total];
+            for (int i = 0; i < chars.length; i++) {
+                chars[i] = (char) fr.read();
+                if (chars[i] == 'e' || chars[i] == 'E') {
+                    numE++;
+                }
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -67,12 +73,24 @@ public class ExerciseOne {
 
         // TODO Read input2.txt and print the total number of characters, and the number of e and E characters.
         // TODO Use a BufferedReader.
+        File file = new File("input2.txt");
+        total = (int) file.length();
+        String line;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            char[] chars = new char[total];
+            for (int i = 0; i < chars.length; i++) {
+                chars[i] = (char) br.read();
+                if (chars[i] == 'e' || chars[i] == 'E') {
+                    numE++;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("Number of e/E's: " + numE + " out of " + total);
-    }
-
-    public static void main(String[] args) {
-        new ExerciseOne().start();
     }
 
 }
