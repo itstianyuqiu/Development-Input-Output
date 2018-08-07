@@ -2,6 +2,11 @@ package ictgradschool.industry.lab_fileio.ex03;
 
 import ictgradschool.Keyboard;
 
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  * Created by anhyd on 20/03/2017.
  */
@@ -38,9 +43,20 @@ public class MovieReader {
     protected Movie[] loadMovies(String fileName) {
 
         // TODO Implement this method
-
+        Movie[] movies=null;
+        try (DataInputStream dis = new DataInputStream(new FileInputStream(fileName))) {
+            int len=dis.readInt();
+            movies=new Movie[len];
+            for (int i = 0; i <len ; i++) {
+                movies[i]=new Movie(dis.readUTF(),dis.readInt(),dis.readInt(),dis.readUTF());
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("Movies loaded successfully from " + fileName + "!");
-        return null;
+        return movies;
 
     }
 
@@ -48,39 +64,43 @@ public class MovieReader {
         System.out.println("Movie Collection");
         System.out.println("================");
         // Step 2.  Complete the printMoviesArray() method
-        for(int i = 0; i<films.length; i++){
+        for (int i = 0; i < films.length; i++) {
             System.out.println(films[i].toString());
         }
     }
+
     private Movie getMostRecentMovie(Movie[] films) {
         // Step 3.  Complete the getMostRecentMovie() method.
-        Movie temp=null;
-        for(int i = 1; i<films.length; i++){
-            if(films[i].isMoreRecentThan(films[i-1])){
+        Movie temp = null;
+        for (int i = 1; i < films.length; i++) {
+            if (films[i].isMoreRecentThan(films[i - 1])) {
                 temp = films[i];
             }
         }
         return temp;
     }
+
     private Movie getLongestMovie(Movie[] films) {
         // Step 4.  Complete the getLongest() method.
-        Movie temp=null;
-        for(int i = 1; i<films.length; i++){
-            if(films[i].isLongerThan(films[i-1])){
+        Movie temp = null;
+        for (int i = 1; i < films.length; i++) {
+            if (films[i].isLongerThan(films[i - 1])) {
                 temp = films[i];
             }
         }
         return temp;
     }
+
     private void printResults(Movie mostRecent, Movie longest) {
         System.out.println();
         System.out.println("The most recent movie is: " + mostRecent.toString());
         System.out.println("The longest movie is: " + longest.toString());
     }
+
     private void printDirector(String movieName, Movie[] movies) {
         // Step 5. Complete the printDirector() method
-        for(int i = 0; i<movies.length; i++){
-            if(movieName.equals(movies[i].getName())){
+        for (int i = 0; i < movies.length; i++) {
+            if (movieName.equals(movies[i].getName())) {
                 System.out.println(movieName + " was directed by " + movies[i].getDirector());
                 return;
             }
