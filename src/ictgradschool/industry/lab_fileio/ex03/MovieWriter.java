@@ -2,6 +2,11 @@ package ictgradschool.industry.lab_fileio.ex03;
 
 import ictgradschool.Keyboard;
 
+import java.io.DataOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 
 /**
  * Created by anhyd on 20/03/2017.
@@ -27,7 +32,15 @@ public class MovieWriter {
     protected void saveMovies(String fileName, Movie[] films) {
 
         // TODO Implement this method
-
+        try(DataOutputStream dos=new DataOutputStream(new FileOutputStream(fileName))){
+            for (int i = 0; i < films.length; i++) {
+                dos.writeUTF(films[i].toString());
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("Movies saved successfully to " + fileName + "!");
     }
 
