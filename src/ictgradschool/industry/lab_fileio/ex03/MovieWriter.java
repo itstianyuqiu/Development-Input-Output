@@ -2,10 +2,7 @@ package ictgradschool.industry.lab_fileio.ex03;
 
 import ictgradschool.Keyboard;
 
-import java.io.DataOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 
 /**
@@ -32,7 +29,7 @@ public class MovieWriter {
     protected void saveMovies(String fileName, Movie[] films) {
 
         // TODO Implement this method
-        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(fileName))) {
+        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(new File(fileName)))) {
             dos.writeInt(films.length);
             for (int i = 0; i < films.length; i++) {
                 dos.writeUTF(films[i].getName());

@@ -2,10 +2,7 @@ package ictgradschool.industry.lab_fileio.ex03;
 
 import ictgradschool.Keyboard;
 
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by anhyd on 20/03/2017.
@@ -44,7 +41,7 @@ public class MovieReader {
 
         // TODO Implement this method
         Movie[] movies=null;
-        try (DataInputStream dis = new DataInputStream(new FileInputStream(fileName))) {
+        try (DataInputStream dis = new DataInputStream(new FileInputStream(new File(fileName)))) {
             int len=dis.readInt();
             movies=new Movie[len];
             for (int i = 0; i <len ; i++) {
