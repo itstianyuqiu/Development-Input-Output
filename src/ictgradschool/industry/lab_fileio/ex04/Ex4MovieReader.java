@@ -13,6 +13,7 @@ public class Ex4MovieReader extends MovieReader {
 
         // TODO Implement this with a Scanner
 
+
         return null;
     }
 

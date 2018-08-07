@@ -24,6 +24,7 @@ public class Ex4MovieWriter extends MovieWriter {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        System.out.println("done!");
     }
 
     public static void main(String[] args) {
