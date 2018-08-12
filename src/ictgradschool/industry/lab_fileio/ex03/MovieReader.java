@@ -68,9 +68,9 @@ public class MovieReader {
 
     private Movie getMostRecentMovie(Movie[] films) {
         // Step 3.  Complete the getMostRecentMovie() method.
-        Movie temp = null;
+        Movie temp =films[0];
         for (int i = 1; i < films.length; i++) {
-            if (films[i].isMoreRecentThan(films[i - 1])) {
+            if (films[i].isMoreRecentThan(temp)) {
                 temp = films[i];
             }
         }
@@ -79,9 +79,9 @@ public class MovieReader {
 
     private Movie getLongestMovie(Movie[] films) {
         // Step 4.  Complete the getLongest() method.
-        Movie temp = null;
-        for (int i = 1; i < films.length; i++) {
-            if (films[i].isLongerThan(films[i - 1])) {
+        Movie temp = films[0];
+        for (int i = 1; i < films.length-1; i++) {
+            if (films[i].isLongerThan(temp)) {
                 temp = films[i];
             }
         }
